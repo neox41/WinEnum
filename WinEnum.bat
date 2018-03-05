@@ -65,7 +65,7 @@ echo ---------------------------------------------------------------------------
 netsh firewall show state >> report.txt 2>nul
 netsh firewall show config >> report.txt 2>nul
 netsh dump >> report.txt 2>nul
-netsh advfirewall firewall show rule name=all >> report.txt 2>nul 
+netsh advfirewall firewall show rule name=all verbose >> report.txt 2>nul 
 echo --------------------------------------------------------------------------------- >> report.txt 2>nul
 echo. >> report.txt 2>nul
 
@@ -129,8 +129,8 @@ echo ---------------------------------------------------------------------------
 dir /s *pass* == *cred* == *vnc* == *.config* >> report.txt 2>nul
 findstr /si password *.xml *.ini *.txt >> report.txt 2>nul
 findstr /si pass *.xml *.ini *.txt >> report.txt 2>nul
-reg query HKLM /f password /t REG_SZ /s >> report.txt 2>nul
-reg query HKCU /f password /t REG_SZ /s >> report.txt 2>nul
+reg query HKLM /f password /t REG_SZ /s /reg:64 >> report.txt 2>nul
+reg query HKCU /f password /t REG_SZ /s /reg:64 >> report.txt 2>nul
 type c:\sysprep.inf >> report.txt 2>nul
 type c:\sysprep\sysprep.xml >> report.txt 2>nul
 type %WINDIR%\Panther\Unattend\Unattended.xml >> report.txt 2>nul
@@ -140,19 +140,19 @@ type ScheduledTasks\ScheduledTasks.xml >> report.txt 2>nul
 type Printers\Printers.xml >> report.txt 2>nul
 type Drives\Drives.xml >> report.txt 2>nul
 type DataSources\DataSources.xml >> report.txt 2>nul
-reg query "HKCU\Software\ORL\WinVNC3\Password" >> report.txt 2>nul
-reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" >> report.txt 2>nul
-reg query" HKCU\Software\SimonTatham\PuTTY\Sessions" >> report.txt 2>nul
+reg query "HKCU\Software\ORL\WinVNC3\Password" /reg:64 >> report.txt 2>nul
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" /reg:64 >> report.txt 2>nul
+reg query" HKCU\Software\SimonTatham\PuTTY\Sessions" /reg:64 >> report.txt 2>nul
 echo --------------------------------------------------------------------------------- >> report.txt 2>nul
 echo. >> report.txt 2>nul
 
 echo --------------------------------------------------------------------------------- >> report.txt 2>nul
 echo [+] Checking AlwaysInstallElevated >> report.txt 2>nul
 echo --------------------------------------------------------------------------------- >> report.txt 2>nul
-reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated >> report.txt 2>nul
-reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated >> report.txt 2>nul
-reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated >> report.txt 2>nul
-reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated >> report.txt 2>nul
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated /reg:64 >> report.txt 2>nul
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated /reg:64 >> report.txt 2>nul
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated /reg:64 >> report.txt 2>nul
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated /reg:64 >> report.txt 2>nul
 echo --------------------------------------------------------------------------------- >> report.txt 2>nul
 echo. >> report.txt 2>nul
 
